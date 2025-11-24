@@ -1,0 +1,551 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Guía de Envío - LlanosXpress</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Ubuntu:wght@400;500;700&display=swap');
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        @page {
+            size: letter;
+            margin: 0;
+        }
+
+        body {
+            font-family: 'Ubuntu', sans-serif;
+            background: white;
+            margin: 0;
+            padding: 0;
+        }
+
+        .page {
+            width: 5.5in;
+            height: 8.5in;
+            margin: 0 auto;
+            background: white;
+            padding: 0.25in;
+        }
+
+        .guia-container {
+            width: 100%;
+            height: 100%;
+            background: white;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .header-top {
+            display: grid;
+            grid-template-columns: 120px 1fr;
+            gap: 6px;
+            margin-bottom: 6px;
+            align-items: start;
+        }
+
+        .logo-header {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 2px solid #ff661d;
+            padding: 6px;
+            background: white;
+            height: 100%;
+        }
+
+        .logo-header img {
+            max-width: 100%;
+            max-height: 50px;
+            object-fit: contain;
+            display: block;
+        }
+
+        .remesa-fecha-box {
+            border: 2px solid #ff661d;
+            padding: 6px;
+            background: white;
+            display: grid;
+            grid-template-columns: 1fr auto;
+            gap: 10px;
+            align-items: center;
+        }
+
+        .remesa-info {
+            text-align: center;
+        }
+
+        .remesa-info .label {
+            font-size: 11px;
+            font-weight: 700;
+            color: #ff661d;
+            margin-bottom: 2px;
+        }
+
+        .remesa-info .numero {
+            font-size: 18px;
+            font-weight: 700;
+            color: #000;
+        }
+
+        .fecha-info {
+            text-align: right;
+            font-size: 9px;
+            padding-right: 8px;
+        }
+
+        .fecha-info strong {
+            color: #ff661d;
+            display: block;
+            margin-bottom: 2px;
+        }
+
+        .fecha-info .fecha-value {
+            border-bottom: 1px solid #000;
+            min-width: 100px;
+            display: inline-block;
+            padding: 2px 4px;
+        }
+
+        .main-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr 140px;
+            gap: 6px;
+            margin-bottom: 6px;
+        }
+
+        .section-box {
+            border: 2px solid #ff661d;
+            padding: 6px;
+            background: white;
+        }
+
+        .section-title {
+            background: #ff661d;
+            color: white;
+            padding: 3px 6px;
+            font-weight: 700;
+            font-size: 9px;
+            margin: -6px -6px 6px -6px;
+            text-align: center;
+        }
+
+        .field-row {
+            display: flex;
+            margin-bottom: 3px;
+            font-size: 8px;
+            line-height: 1.2;
+        }
+
+        .field-label {
+            font-weight: 700;
+            min-width: 55px;
+            color: #333;
+        }
+
+        .field-value {
+            flex: 1;
+            border-bottom: 1px solid #ccc;
+            min-height: 10px;
+        }
+
+        .valores-box {
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+        }
+
+        .valores-content {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .valores-row {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 4px;
+            font-size: 8px;
+            padding: 2px 0;
+        }
+
+        .valores-row.total {
+            border-top: 2px solid #000;
+            padding-top: 5px;
+            margin-top: 5px;
+            font-weight: 700;
+            font-size: 10px;
+        }
+
+        .valores-row .label {
+            font-weight: 600;
+        }
+
+        .valores-row .value {
+            font-weight: 700;
+            min-width: 60px;
+            text-align: right;
+            border-bottom: 1px solid #ccc;
+        }
+
+        .middle-section {
+            display: grid;
+            grid-template-columns: 1fr 1fr 140px;
+            gap: 6px;
+            margin-bottom: 6px;
+        }
+
+        .firmas-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 6px;
+            grid-column: 1 / 3;
+        }
+
+        .firma-box {
+            border: 2px solid #ff661d;
+            padding: 6px;
+        }
+
+        .firma-content {
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+        }
+
+        .firma-label {
+            font-weight: 700;
+            font-size: 8px;
+            margin-bottom: 3px;
+            text-align: center;
+            color: #ff661d;
+        }
+
+        .firma-space {
+            flex: 1;
+            border-bottom: 1px solid #000;
+            margin-bottom: 3px;
+            min-height: 20px;
+        }
+
+        .fecha-firma {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 3px;
+            font-size: 7px;
+            text-align: center;
+        }
+
+        .fecha-firma div {
+            border-bottom: 1px solid #000;
+            padding: 1px;
+            font-weight: 700;
+        }
+
+        .descripcion-box {
+            border: 2px solid #ff661d;
+            padding: 6px;
+            height: 100%;
+        }
+
+        .descripcion-content {
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .descripcion-title {
+            background: #ff661d;
+            color: white;
+            padding: 3px 6px;
+            font-weight: 700;
+            font-size: 9px;
+            margin: -6px -6px 6px -6px;
+            text-align: center;
+        }
+
+        .descripcion-fields {
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
+            font-size: 7px;
+        }
+
+        .desc-field {
+            display: flex;
+            align-items: center;
+            gap: 3px;
+        }
+
+        .desc-field strong {
+            white-space: nowrap;
+            font-size: 7px;
+            font-weight: 700;
+            min-width: 50px;
+        }
+
+        .desc-field .value {
+            border-bottom: 1px solid #ccc;
+            flex: 1;
+            min-height: 10px;
+        }
+
+        .tipo-pago-field {
+            display: flex;
+            align-items: center;
+            gap: 3px;
+            font-size: 8px;
+            font-weight: 700;
+            margin-top: 3px;
+            padding-top: 3px;
+            border-top: 1px solid #ccc;
+        }
+
+        .tipo-pago-field strong {
+            color: #ff661d;
+            min-width: 50px;
+        }
+
+        .tipo-pago-field .value {
+            border-bottom: 1.5px solid #000;
+            flex: 1;
+            min-height: 11px;
+        }
+
+        .bottom-section {
+            display: grid;
+            grid-template-columns: 140px 1fr;
+            gap: 6px;
+        }
+
+        .operador-box {
+            border: 2px solid #ff661d;
+            padding: 6px;
+        }
+
+        .operador-title {
+            background: #ff661d;
+            color: white;
+            padding: 3px 6px;
+            font-weight: 700;
+            font-size: 9px;
+            margin: -6px -6px 6px -6px;
+            text-align: center;
+        }
+
+        .operador-value {
+            text-align: center;
+            font-size: 9px;
+            font-weight: 700;
+            padding: 6px 0;
+        }
+
+        .disclaimer-box {
+            background: #d4dbe8;
+            border: 2px solid #ff661d;
+            padding: 5px;
+            text-align: center;
+            font-size: 6.5px;
+            font-weight: 700;
+            line-height: 1.3;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 4px;
+        }
+
+        .icon {
+            display: inline-block;
+            width: 14px;
+            height: 14px;
+            background: #ff661d;
+            color: white;
+            border-radius: 2px;
+            text-align: center;
+            line-height: 14px;
+            font-size: 11px;
+            font-weight: 700;
+            flex-shrink: 0;
+        }
+
+        @media print {
+            body {
+                margin: 0;
+                padding: 0;
+            }
+            
+            .page {
+                page-break-after: always;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="page">
+        <div class="guia-container">
+            <!-- FILA 1: LOGO + REMESA CON FECHA -->
+            <div class="header-top">
+                <div class="logo-header">
+                    <img src="https://drive.google.com/uc?export=download&id=10wGdGDGXSFzuiHos1owklU00hhWVwC0Y" alt="LlanosXpress">
+                </div>
+                
+                <div class="remesa-fecha-box">
+                    <div class="remesa-info">
+                        <div class="label">REMESA</div>
+                        <div class="numero"><<[ID SOLICITUD]>></div>
+                    </div>
+                    <div class="fecha-info">
+                        <strong>FECHA:</strong>
+                        <div class="fecha-value"><<[FECHA]>></div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- FILA 2: REMITENTE + DESTINATARIO + VALORES -->
+            <div class="main-grid">
+                <div class="section-box">
+                    <div class="section-title"><<[REMITE].[OFICINA]>></div>
+                    <div class="field-row">
+                        <span class="field-label">NOMBRE:</span>
+                        <span class="field-value"><<[CONTACTO].[NOMBRE]>></span>
+                    </div>
+                    <div class="field-row">
+                        <span class="field-label">EMPRESA:</span>
+                        <span class="field-value"><<[CONTACTO].[EMPRESA].[EMPRESA]>></span>
+                    </div>
+                    <div class="field-row">
+                        <span class="field-label">DIRECCIÓN:</span>
+                        <span class="field-value"><<[CONTACTO].[DIRECCIÓN]>></span>
+                    </div>
+                    <div class="field-row">
+                        <span class="field-label">CELULAR:</span>
+                        <span class="field-value"><<[CONTACTO].[CELULAR]>></span>
+                    </div>
+                </div>
+
+                <div class="section-box">
+                    <div class="section-title"><<[DESTINO].[OFICINA]>></div>
+                    <div class="field-row">
+                        <span class="field-label">NOMBRE:</span>
+                        <span class="field-value"><<[RECIBE].[NOMBRE]>></span>
+                    </div>
+                    <div class="field-row">
+                        <span class="field-label">EMPRESA:</span>
+                        <span class="field-value"><<[RECIBE].[EMPRESA].[EMPRESA]>></span>
+                    </div>
+                    <div class="field-row">
+                        <span class="field-label">DIRECCIÓN:</span>
+                        <span class="field-value"><<[RECIBE].[DIRECCIÓN]>></span>
+                    </div>
+                    <div class="field-row">
+                        <span class="field-label">CELULAR:</span>
+                        <span class="field-value"><<[RECIBE].[CELULAR]>></span>
+                    </div>
+                </div>
+
+                <div class="section-box valores-box">
+                    <div class="section-title">VALORES</div>
+                    <div class="valores-content">
+                        <div>
+                            <div class="valores-row">
+                                <span class="label">FLETE:</span>
+                                <span class="value"><<[TARIFA]>></span>
+                            </div>
+                            <div class="valores-row">
+                                <span class="label">VOL.:</span>
+                                <span class="value"><<[CALCULO DEL VOLUMEN]>></span>
+                            </div>
+                            <div class="valores-row">
+                                <span class="label">SEGURO:</span>
+                                <span class="value"><<[CALCULO DEL SEGURO]>></span>
+                            </div>
+                        </div>
+                        <div class="valores-row total">
+                            <span class="label">TOTAL:</span>
+                            <span class="value"><<[CREDITO]>> <<[CONTADO]>> <<[ALCOBRO]>></span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- FILA 3: FIRMAS + DESCRIPCIÓN -->
+            <div class="middle-section">
+                <div class="firmas-grid">
+                    <div class="firma-box">
+                        <div class="firma-content">
+                            <div class="firma-label">FIRMA REMITENTE</div>
+                            <div class="firma-space"></div>
+                            <div class="fecha-firma">
+                                <div>DÍA</div>
+                                <div>MES</div>
+                                <div>AÑO</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="firma-box">
+                        <div class="firma-content">
+                            <div class="firma-label">FIRMA DESTINATARIO</div>
+                            <div class="firma-space"><<[ENTREGA NOTA]>></div>
+                            <div class="fecha-firma">
+                                <div>DÍA</div>
+                                <div>MES</div>
+                                <div>AÑO</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="descripcion-box">
+                    <div class="descripcion-content">
+                        <div class="descripcion-title">DESCRIPCIÓN</div>
+                        <div class="descripcion-fields">
+                            <div class="desc-field">
+                                <strong>PIEZAS:</strong>
+                                <span class="value"><<[PIEZAS]>></span>
+                            </div>
+                            <div class="desc-field">
+                                <strong>KILOS:</strong>
+                                <span class="value"><<[KILOS]>></span>
+                            </div>
+                            <div class="desc-field">
+                                <strong>VERIFICADO:</strong>
+                                <span class="value"><<[COMPRA]>></span>
+                            </div>
+                            <div class="desc-field">
+                                <strong>VALOR DEC:</strong>
+                                <span class="value"><<[VALOR DECLARADO (SEGURO)]>></span>
+                            </div>
+                            <div class="tipo-pago-field">
+                                <strong>TIPO DE PAGO:</strong>
+                                <span class="value"><<[TIPO DE PAGO]>></span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- FILA 4: OPERADOR + DISCLAIMER -->
+            <div class="bottom-section">
+                <div class="operador-box">
+                    <div class="operador-title">OPERADOR</div>
+                    <div class="operador-value"><<[ASIGNADO].[NOMBRE]>></div>
+                </div>
+
+                <div class="disclaimer-box">
+                    <span class="icon">⚠</span>
+                    <span>POR EL VALOR DECLARADO NO SE RESPONDERA POR EL VALOR DE LAS JOYAS, VALORES NEGOCIABLES NO OBJETOS PROHIBIDOS TRANSPORTE POR LA LEY CUMPLIDO</span>
+                    <span class="icon">📋</span>
+                    <span>RECLAMA LA GUIA AL ENTREGAR VALORES EN LA OFICINA Y VALORES SALDOS AL COBRARO DEL ARTICULO</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
