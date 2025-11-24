@@ -145,7 +145,7 @@
         .field-label {
             font-weight: 700;
             min-width: 55px;
-            color: #ff661d;
+            color: #333;
         }
 
         .field-value {
@@ -262,7 +262,7 @@
 
         .descripcion-title {
             background: #ff661d;
-            color: black;
+            color: white;
             padding: 3px 6px;
             font-weight: 700;
             font-size: 9px;
@@ -410,26 +410,26 @@
             <!-- FILA 2: REMITENTE + DESTINATARIO + VALORES -->
             <div class="main-grid">
                 <div class="section-box">
-                    <div class="section-title">REMITENTE></div>
+                    <div class="section-title">REMITENTE</div>
                     <div class="field-row">
                         <span class="field-label">CIUDAD:</span>
                         <span class="field-value">{{REMITE}}</span>
                     </div>
                     <div class="field-row">
                         <span class="field-label">NOMBRE:</span>
-                        <span class="field-value">{{CONTACTO}}>></span>
+                        <span class="field-value">{{CONTACTO}}</span>
                     </div>
                     <div class="field-row">
                         <span class="field-label">EMPRESA:</span>
-                        <span class="field-value">{{EMPRESACONTACTO}}></span>
+                        <span class="field-value">{{EMPRESACONTACTO}}</span>
                     </div>
                     <div class="field-row">
                         <span class="field-label">DIRECCIÓN:</span>
-                        <span class="field-value">{{DIRECCIONCONTACTO}}></span>
+                        <span class="field-value">{{DIRECCIONCONTACTO}}</span>
                     </div>
                     <div class="field-row">
                         <span class="field-label">CELULAR:</span>
-                        <span class="field-value">{{EMPRESA CONTACTO}}></span>
+                        <span class="field-value">{{EMPRESA CONTACTO}}</span>
                     </div>
                 </div>
 
@@ -441,7 +441,7 @@
                     </div>
                     <div class="field-row">
                         <span class="field-label">NOMBRE:</span>
-                        <span class="field-value">{{RECIBE}}></span>
+                        <span class="field-value">{{RECIBE}}</span>
                     </div>
                     <div class="field-row">
                         <span class="field-label">EMPRESA:</span>
@@ -494,9 +494,9 @@
                             <div class="firma-label">FIRMA REMITENTE</div>
                             <div class="firma-space">{{CONTACTO}}</div>
                             <div class="fecha-firma">
-                                <div>DÍA {{DIAREMITE}}</div>
-                                <div>MES {{MESREMITE}}</div>
-                                <div>AÑO {{ANOREMITE}}</div>
+                                <div>DÍA {{DR}}</div>
+                                <div>MES {{MR}}</div>
+                                <div>AÑO {{AR}}</div>
                             </div>
                         </div>
                     </div>
@@ -506,9 +506,9 @@
                             <div class="firma-label">FIRMA DESTINATARIO</div>
                             <div class="firma-space">{{ENTREGA}}</div>
                             <div class="fecha-firma">
-                                <div>DÍA {{DIADESTINO}}</div>
-                                <div>MES {{MESDESTINO}}</div>
-                                <div>AÑO {{ANODESTINO}}</div>
+                                <div>DÍA {{DIAD}}</div>
+                                <div>MES {{MESD}}</div>
+                                <div>AÑO {{ANOD}}</div>
                             </div>
                         </div>
                     </div>
@@ -536,7 +536,7 @@
                             </div>
                             <div class="tipo-pago-field">
                                 <strong>TIPO DE PAGO:</strong>
-                                <span class="value">{{FORMAPAGO}}></span>
+                                <span class="value">{{FORMAPAGO}}</span>
                             </div>
                         </div>
                     </div>
@@ -561,5 +561,6 @@
     </div>
 </body>
 </html>
+
 
 
