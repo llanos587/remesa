@@ -460,7 +460,7 @@
                     </div>
                     <div class="field-row">
                         <span class="field-label">DIRECCIÓN:</span>
-                        <span class="field-value"><<CONCATENATE([CONTACTO].[DIRECCIÓN],[CONTACTO].[LOCAL-APTO])>></span>
+                        <span class="field-value"><<CONCATENATE([RECIBE].[DIRECCIÓN],[RECIBE].[LOCAL-APTO])>></span>
                     </div>
                     <div class="field-row">
                         <span class="field-label">CELULAR:</span>
@@ -508,8 +508,8 @@
                             <div class="firma-label">FIRMA REMITENTE</div>
                             <div class="firma-space"><<[CONTACTO].[NOMBRE]>></div>
                             <div class="fecha-firma">
-                                <div>DÍA <<TEXT(DAY[FECHA]), "00")>></div>
-                                <div>MES <<TEXT(MONTH([FECHA]), "00")>></div>
+                                <div>DÍA <<TEXT(DAY[FECHA]),"00")>></div>
+                                <div>MES <<TEXT(MONTH([FECHA]),"00")>></div>
                                 <div>AÑO <<YEAR([FECHA])>></div>
                             </div>
                         </div>
@@ -520,8 +520,8 @@
                             <div class="firma-label">FIRMA DESTINATARIO</div>
                             <div class="firma-space"><<[ENTREGA NOTA]>> <<[ASIGNADO ENTREGA].[NOMBRE]>> </div>
                             <div class="fecha-firma">
-                                <div>DÍA <<TEXT(DAY(TODAY()), "00")>></div>
-                                <div>MES <<TEXT(MONTH(TODAY()), "00")>></div>
+                                <div>DÍA <<TEXT(DAY(TODAY()),"00")>></div>
+                                <div>MES <<TEXT(MONTH(TODAY()),"00")>></div>
                                 <div>AÑO <<YEAR(TODAY())>></div>
                             </div>
                         </div>
@@ -575,6 +575,7 @@
     </div>
 </body>
 </html>
+
 
 
 
