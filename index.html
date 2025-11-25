@@ -409,11 +409,11 @@
                 <div class="remesa-fecha-box">
                     <div class="remesa-info">
                         <div class="label">REMESA</div>
-                        <div class="numero">{{ID SOLICITUD}}</div>
+                        <div class="numero"><<[GUIA]>></div>
                     </div>
                     <div class="fecha-info">
                         <strong>FECHA:</strong>
-                        <div class="fecha-value">{{FECHA}}</div>
+                        <div class="fecha-value"><<[FECHA]>></div>
                     </div>
                 </div>
             </div>
@@ -424,23 +424,23 @@
                     <div class="section-title">REMITENTE</div>
                     <div class="field-row">
                         <span class="field-label">CIUDAD:</span>
-                        <span class="field-value">{{REMITE}}</span>
+                        <span class="field-value"><<[REMITE].[OFICINA]>></span>
                     </div>
                     <div class="field-row">
                         <span class="field-label">NOMBRE:</span>
-                        <span class="field-value">{{CONTACTO}}</span>
+                        <span class="field-value"><<[CONTACTO].[NOMBRE]>></span>
                     </div>
                     <div class="field-row">
                         <span class="field-label">EMPRESA:</span>
-                        <span class="field-value">{{EMPRESACONTACTO}}</span>
+                        <span class="field-value"><<[CONTACTO].[EMPRESA].[EMPRESA]>></span>
                     </div>
                     <div class="field-row">
                         <span class="field-label">DIRECCIÓN:</span>
-                        <span class="field-value">{{DIRECCIONCONTACTO}}</span>
+                        <span class="field-value"><<CONCATENATE([CONTACTO].[DIRECCIÓN],[CONTACTO].[LOCAL-APTO])>></span>
                     </div>
                     <div class="field-row">
                         <span class="field-label">CELULAR:</span>
-                        <span class="field-value">{{EMPRESA CONTACTO}}</span>
+                        <span class="field-value"><<[CONTACTO].[CELULAR]>></span>
                     </div>
                 </div>
 
@@ -448,23 +448,23 @@
                     <div class="section-title">DESTINATARIO</div>
                     <div class="field-row">
                         <span class="field-label">CIUDAD:</span>
-                        <span class="field-value">{{DESTINO}}</span>
+                        <span class="field-value"><<[DESTINO].[OFICINA]>></span>
                     </div>
                     <div class="field-row">
                         <span class="field-label">NOMBRE:</span>
-                        <span class="field-value">{{RECIBE}}</span>
+                        <span class="field-value"><<[RECIBE].[NOMBRE]>></span>
                     </div>
                     <div class="field-row">
                         <span class="field-label">EMPRESA:</span>
-                        <span class="field-value">{{EMPRESARECIBE}}</span>
+                        <span class="field-value"><<[RECIBE].[DIRECCIÓN]>></span>
                     </div>
                     <div class="field-row">
                         <span class="field-label">DIRECCIÓN:</span>
-                        <span class="field-value">{{DIRECCIONRECIBE}}</span>
+                        <span class="field-value"><<CONCATENATE([CONTACTO].[DIRECCIÓN],[CONTACTO].[LOCAL-APTO])>></span>
                     </div>
                     <div class="field-row">
                         <span class="field-label">CELULAR:</span>
-                        <span class="field-value">{{CELULARRECIBE}}</span>
+                        <span class="field-value"><<[RECIBE].[CELULAR]>></span>
                     </div>
                 </div>
 
@@ -474,24 +474,27 @@
                         <div>
                             <div class="valores-row">
                                 <span class="label">FLETE:</span>
-                                <span class="value">{{TARIFA}}</span>
+                                <span class="value"><<[TARIFA]>></span>
                             </div>
                             <div class="valores-row">
                                 <span class="label">VOL.:</span>
-                                <span class="value">{{VOLUMEN}}</span>
+                                <span class="value"><<[CALCULO DEL VOLUMEN]>></span>
                             </div>
                             <div class="valores-row">
                                 <span class="label">SEGURO:</span>
-                                <span class="value">{{SEGURO}}</span>
+                                <span class="value"><<[CALCULO DEL SEGURO]>></span>
                             </div>
                             <div class="valores-row">
                                 <span class="label">COMPRA:</span>
-                                <span class="value">{{COMPRACOMISION}}</span>
+                                <span class="value"> <<[COMPRA]>></span>
                             </div>
                         </div>
                         <div class="valores-row total">
                             <span class="label">TOTAL:</span>
-                            <span class="value">{{TOTALIZADO}}</span>
+                            <span class="value"><<IF([CREDITO]>16000, [CREDITO], "")>>
+                                                <<IF([CONTADO]>16000, [CONTADO], "")>>
+                                                <<IF([ALCOBRO]>16000, [ALCOBRO], "")>>
+                              </span>
                         </div>
                     </div>
                 </div>
@@ -503,11 +506,11 @@
                     <div class="firma-box">
                         <div class="firma-content">
                             <div class="firma-label">FIRMA REMITENTE</div>
-                            <div class="firma-space">{{CONTACTO}}</div>
+                            <div class="firma-space"><<[CONTACTO].[NOMBRE]>></div>
                             <div class="fecha-firma">
-                                <div>DÍA {{DR}}</div>
-                                <div>MES {{MR}}</div>
-                                <div>AÑO {{AR}}</div>
+                                <div>DÍA <<TEXT(DAY[FECHA]), "00")>></div>
+                                <div>MES <<TEXT(MONTH([FECHA]), "00")>></div>
+                                <div>AÑO <<YEAR([FECHA])>></div>
                             </div>
                         </div>
                     </div>
@@ -515,11 +518,11 @@
                     <div class="firma-box">
                         <div class="firma-content">
                             <div class="firma-label">FIRMA DESTINATARIO</div>
-                            <div class="firma-space">{{ENTREGA}}</div>
+                            <div class="firma-space"><<[ENTREGA NOTA]>> <<[ASIGNADO ENTREGA].[NOMBRE]>> </div>
                             <div class="fecha-firma">
-                                <div>DÍA {{DD}}</div>
-                                <div>MES {{MD}}</div>
-                                <div>AÑO {{AD}}</div>
+                                <div>DÍA <<TEXT(DAY(TODAY()), "00")>></div>
+                                <div>MES <<TEXT(MONTH(TODAY()), "00")>></div>
+                                <div>AÑO <<YEAR(TODAY())>></div>
                             </div>
                         </div>
                     </div>
@@ -531,23 +534,23 @@
                         <div class="descripcion-fields">
                             <div class="desc-field">
                                 <strong>PIEZAS:</strong>
-                                <span class="value">{{PIEZAS}}</span>
+                                <span class="value"><<[PIEZAS]>></span>
                             </div>
                             <div class="desc-field">
                                 <strong>KILOS:</strong>
-                                <span class="value">{{KILOS}}</span>
+                                <span class="value"><<[KILOS]>></span>
                             </div>
                             <div class="desc-field">
                                 <strong>VERIFICADO:</strong>
-                                <span class="value">{{VERIFICADO}}</span>
+                                <span class="value">NO, <<IF([ESPECIAL]=Y,"ESPECIAL","")>></span>
                             </div>
                             <div class="desc-field">
                                 <strong>VALOR DEC:</strong>
-                                <span class="value">{{VALORD}}</span>
+                                <span class="value"><<[VALOR DECLARADO (SEGURO)]>></span>
                             </div>
                             <div class="tipo-pago-field">
                                 <strong>TIPO DE PAGO:</strong>
-                                <span class="value">{{FORMAPAGO}}</span>
+                                <span class="value"><<[TIPO DE PAGO]>></span>
                             </div>
                         </div>
                     </div>
@@ -558,7 +561,7 @@
             <div class="bottom-section">
                 <div class="operador-box">
                     <div class="operador-title">OPERADOR</div>
-                    <div class="operador-value">{{OPERADOR}}</div>
+                    <div class="operador-value"><<[ASIGNADO].[NOMBRE]>></div>
                 </div>
 
                 <div class="disclaimer-box">
@@ -572,6 +575,7 @@
     </div>
 </body>
 </html>
+
 
 
 
